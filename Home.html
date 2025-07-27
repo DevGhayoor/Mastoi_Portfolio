@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="nav">
+            <div class="logo">Gha<span>YooR</span></div>
+            <ul>
+                <li><a href="Home.html" class="active" target="_blank">Home</a></li>
+                <li><a href="about.html" target="_blank">About</a></li>
+                <li><a href="service.html" target="_blank">Services</a></li>
+                <li><a href="Signup.html" target="_blank">SignUp</a></li>
+                
+            </ul>
+        </div>
+        <div class="home">
+            <div class="home-content">
+                <h1>I am <span>Ghayoor Abbas</span> <br> a web developer.</h1>
+                <p>As a front-end developer, I specialize in crafting intuitive and visually <br>appealing user
+                    experiences.
+                    My work involves translating design concepts into<br> responsive, interactive websites and
+                    applications
+                    using languages like HTML, CSS,<br> and JavaScript. I meticulously ensure cross-browser
+                    compatibility
+                    and optimize performance <br>to deliver seamless interactions for users.</p>
+            </div>
+            <div class="btn-box">
+                <button>Hire Me <a href="https\\www.google.com"></a></button>
+            </div>
+            <div class="img-box">
+                <img src="download.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="more-info">
+            <div class="info-img">
+                <img src="img.png" alt="">
+            </div>
+            <div class="info-content">
+                <h2 class="heading"> More <span> Information</span></h2>
+                <h3>Frontend <span>Developer</span></h3>
+                <p>Being recognized as the best web developer is an accolade that stems from a blend of technical
+                    prowess,
+                    innovative thinking, and a user-centric approach. The finest web developers are adept at
+                    transforming
+                    complex design concepts into seamless, interactive digital experiences that captivate users. They
+                    are
+                    masters of various web technologies like HTML, CSS, JavaScript, and frameworks such as React and
+                    Angular. Their skillset extends beyond coding; they excel in problem-solving, optimizing
+                    performance,
+                    and ensuring cross-browser compatibility.</p>
+                    
+            </div>
+        </div>
+        
+    </section>
+   
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const message = e.target.message.value;
+    
+            try {
+                const response = await fetch('http://localhost:3000/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, message }),
+                });
+    
+                const data = await response.json();
+                document.getElementById('responseMessage').innerText = data.message;
+    
+                // Reset the form
+                e.target.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').innerText = 'Failed to send message.';
+            }
+        });
+    </script>
+        
+    
+</body>
+
+</html>
